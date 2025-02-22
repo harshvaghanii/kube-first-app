@@ -46,3 +46,49 @@ kubectl delete deployment <deployment-name>
 Delete a deployment
 
 ---
+
+```
+kubectl expose <ObjectName, in this case deployment> <Name, first-app> --type=LoadBalancer --port=8080
+```
+
+Expose it to a port so we can access the app from outside the container
+
+---
+
+```
+kubectl get services
+```
+
+Get all the services running for the cluster
+
+---
+ 
+ ```
+ minikube service <Name, first-app>
+ ```
+
+It will give the address from which it can be accessible externally
+
+---
+
+```
+kubectl scale deployment/nodeapp --replicas=3
+```
+
+Scale the deployment named `nodeapp` to 4 replicas
+
+---
+
+```
+kubectl set image deployment/nodeapp mydockerimages=harshvaghanii/mydockerimages
+```
+
+Update the image in the container
+
+---
+
+```
+kubectl rollout undo deployment/nodeapp
+```
+
+Undo Deployment
