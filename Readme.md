@@ -92,3 +92,19 @@ kubectl rollout undo deployment/nodeapp
 ```
 
 Undo Deployment
+
+---
+
+```
+kubectl get services
+```
+
+Get a list of all services
+
+---
+
+```
+kubectl delete service <service-name>
+```
+
+Delete a Service
