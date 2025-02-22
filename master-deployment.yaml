@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapp-service
+spec:
+  selector:
+    app: nodeapp
+    tier: backend
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+spec: # This is the spec for entire deployment
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+      tier: backend
+  template:
+
+    metadata:
+      labels:
+        app: nodeapp
+        tier: backend
+    spec: # This spec if configuration for the individual pods
+      containers:
+        - name: nodeapp-container
+          image: harshvaghanii/mydockerimages:3

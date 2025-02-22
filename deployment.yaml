@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+spec: # This is the spec for entire deployment
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nodeapp
+      tier: backend
+  template:
+
+    metadata:
+      labels:
+        app: nodeapp
+        tier: backend
+    spec: # This spec if configuration for the individual pods
+      containers:
+        - name: nodeapp-container
+          image: harshvaghanii/mydockerimages:3
